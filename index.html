@@ -247,15 +247,32 @@ section{padding:70px 0}
 <footer><div class="container"><p>© 2027 <span>Miracle Wedding Project.</span> All Rights Reserved.</p><p>*Harga berlaku sampai 31 Desember 2027.</p></div></footer>
 
 <script>
-const menuBtn=document.getElementById("menuBtn"),navLinks=document.getElementById("navLinks");
-menuBtn.addEventListener("click",()=>{navLinks.classList.toggle("active");menuBtn.textContent=navLinks.classList.contains("active")?"×":"☰"});
-document.querySelectorAll(".nav-links a").forEach(l=>l.addEventListener("click",()=>{navLinks.classList.remove("active");menuBtn.textContent="☰"}));
-  document.querySelectorAll(".package-card .btn").forEach(function(btn){
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", function () {
+  navLinks.classList.toggle("active");
+  menuBtn.textContent = navLinks.classList.contains("active") ? "×" : "☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(function (l) {
+  l.addEventListener("click", function () {
+    navLinks.classList.remove("active");
+    menuBtn.textContent = "☰";
+  });
+});
+
+// Tombol KONSULTASI: pesan WhatsApp otomatis sesuai nama paket
+var WA_NUMBER = "6285174482800";
+
+document.querySelectorAll(".package-card .btn").forEach(function (btn) {
   var nama = btn.closest(".package-card").querySelector(".package-name").textContent.trim();
   var pesan = "Halo Miracle Wedding Project, saya ingin konsultasi paket " + nama + " WO 2027.";
-  btn.href = "https://wa.me/6285174482800?text=" + encodeURIComponent(pesan);
+  btn.href = "https://api.whatsapp.com/send?phone=" + WA_NUMBER + "&text=" + encodeURIComponent(pesan);
+  btn.target = "_blank";
+  btn.rel = "noopener";
 });
 </script>
-
+  
 </body>
 </html>
