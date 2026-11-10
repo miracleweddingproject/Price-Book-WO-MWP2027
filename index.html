@@ -250,6 +250,11 @@ section{padding:70px 0}
 const menuBtn=document.getElementById("menuBtn"),navLinks=document.getElementById("navLinks");
 menuBtn.addEventListener("click",()=>{navLinks.classList.toggle("active");menuBtn.textContent=navLinks.classList.contains("active")?"×":"☰"});
 document.querySelectorAll(".nav-links a").forEach(l=>l.addEventListener("click",()=>{navLinks.classList.remove("active");menuBtn.textContent="☰"}));
+  document.querySelectorAll(".package-card .btn").forEach(function(btn){
+  var nama = btn.closest(".package-card").querySelector(".package-name").textContent.trim();
+  var pesan = "Halo Miracle Wedding Project, saya ingin konsultasi paket " + nama + " WO 2027.";
+  btn.href = "https://wa.me/6285174482800?text=" + encodeURIComponent(pesan);
+});
 </script>
 
 </body>
